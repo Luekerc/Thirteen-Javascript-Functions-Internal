@@ -9,20 +9,20 @@
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
-var inputString = "you";
+var inputString = "yo3";
 function checkData(inputString){
-	
-	if(inputString===""){
-		console.log("Invalid Input");
+	if(typeof inputString!=="string"||inputString===""){
+		throw 'Invalid Input';
 	}
 	else if(inputString.length>3 || inputString.length<3 ){
-		console.log("false");
+		throw false;
 	}
 	else {	
-		console.log("function 1 = true");
+		return true;
 	}
 }
 checkData(inputString);
+console.log(checkData(inputString));
 
 /*
  * PROBLEM 2: (easy)
@@ -31,22 +31,19 @@ checkData(inputString);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
-
-
-var a = ["a", "b", "c"];
-var b = ["e", "f", "g"];
+var a = ["a","b","c","d"];
+var b = ["e", "f", "g","h"];
 function concatenateArrays(a, b) {
-	if( a.toString()===""||b.toString()===""){
-		console.log("Invalid Input");
+	if( a.toString()===""||b.toString()===""||!Array.isArray(a)||!Array.isArray(b)){
+		throw "Invalid Input";
 	}
 	else{
 		var finalArray=a.concat(b);
-		// console.log(finalArray);
-		console.log("function 2 = ["+finalArray + "]  Where b is an "+typeof b);
+		return finalArray;
 	}
 }
 concatenateArrays(a, b);
-
+console.log(concatenateArrays(a, b));
 
 /*
  * PROBLEM 3: (easy)
@@ -57,11 +54,10 @@ concatenateArrays(a, b);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
-var noun = "charles";
+var noun = "joe";
 function fixProperNoun(noun) {
-
-	if (noun===""||!isNaN(noun)){
-		console.log("Invalid Input");
+	if (noun===""||!isNaN(noun)||typeof noun!=="string"){
+		throw "Invalid Input";
 	}
 	else{
 		var Noun = noun.toLowerCase();
@@ -69,10 +65,11 @@ function fixProperNoun(noun) {
 		var upperCase = firstLetter.toUpperCase();
 		var tailNoun = Noun.toLowerCase().substr(1);
 		var proNoun = upperCase + tailNoun;
-		console.log("function 3 = "+proNoun);
+		return proNoun;
 	}
 }
 fixProperNoun(noun);
+console.log(fixProperNoun(noun));
 
 /*
  * PROBLEM 4: (easy)
@@ -85,16 +82,16 @@ fixProperNoun(noun);
  */
 inputString = "Charles Lueker";
 function sortLetters(inputString) {
-	if(inputString===''||!isNaN(inputString)){
-			console.log("Invalid Input");
+	if(inputString===''||!isNaN(inputString)||typeof inputString!=="string"){
+			throw "Invalid Input";
 		}
 		else{
 			var orderedString =(inputString.split('').sort().join(''));
-			console.log("function 4 = "+orderedString);
+			return orderedString;
 		}
 }
 sortLetters(inputString);
-
+console.log(sortLetters(inputString));
 
 /*
  * PROBLEM 5: (easy)
@@ -103,17 +100,18 @@ sortLetters(inputString);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
-var integer = -22;
+var integer= -25;
 function absVal(integer) {
-	if (integer===""||isNaN(integer)){
-		console.log("Invalid Input");
+	if (integer===""||isNaN(integer)||typeof integer!=="number"){
+		throw "Invalid Input";
 	}else{
 		integer = integer*integer;
 		integer = Math.sqrt(integer);
-		console.log("function 5 = "+integer);
+		return integer;
 	}
 }
 absVal(integer);
+console.log(absVal(integer));
 /*
  * PROBLEM 6: (easy)
  * Write a function called `myMin` that takes two integers and returns the
@@ -121,19 +119,23 @@ absVal(integer);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
- a = 23;
- b = 45;
+ a = 57;
+ b = 17;
  function myMin(a, b) {
-	if( a===""||b===""||isNaN(a)||isNaN(b)){
-		console.log("Invalid Input");
-	}else if(parseInt(a)>parseInt(b)){
-		console.log("function 6 = "+b);
-	}else{
-		console.log("function 6 = "+a);
+	if( a===""||b===""||isNaN(a)||isNaN(b)||typeof a!=="number"||typeof b!=="number"){
+		throw "Invalid Input";
+	}
+	else if(parseInt(a)>parseInt(b))
+	{
+		return b;
+	}
+	else
+	{
+		return a;
 	}
 }
 myMin(a, b);
-
+console.log(myMin(a, b));
 
 /*
  * PROBLEM 7: (easy)
@@ -146,50 +148,57 @@ myMin(a, b);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
- var number = "9";
+ var number=9;
  function getMonth(number){
-  	switch(number){
-  		case "1": 
-  			console.log("function 7 = January");
-  			break;
-  		case "2": 
-  			console.log("function 7 = February");
-  			break;
-  		case "3": 
-  			console.log("function 7 = March");
-  			break;
-  		case "4": 
-  			console.log("function 7 = April");
-  			break;
-  		case "5": 
-  			console.log("function 7 = May");
-  			break;
-  		case "6": 
-  			console.log("function 7 = June");
-  			break;
-  		case "7": 
-  			console.log("function 7 = July");
-  			break;
-  		case "8": 
-  			console.log("function 7 = August");
-  			break;
-  		case "9":
-  			console.log("function 7 = September");
-  			break;
-  		case "10": 
-  			console.log("function 7 = October");
-  			break;
-  		case "11": 
-  			console.log("function 7 = November");
-  			break;
-  		case "12":
-  			console.log("function 7 = December");
-  			break;
-  		default: 
-  			console.log("function 7 = Invalid Input");
+ 	if(number===""||typeof number!=="number"){
+		throw "Invalid Input";
+	}
+	else
+	{
+	  	switch(number){
+	  		case 1: 
+	  			return "January";
+	  			// break;
+	  		case 2: 
+	  			return "February";
+	  			// break;
+	  		case 3: 
+	  			return "March";
+	  			// break;
+	  		case 4: 
+	  			return "April";
+	  			// break;
+	  		case 5: 
+	  			return "May";
+	  			// break;
+	  		case 6: 
+	  			return "June";
+	  			// break;
+	  		case 7: 
+	  			return "July";
+	  			// break;
+	  		case 8: 
+	  			return "August";
+	  			// break;
+	  		case 9:
+	  			return "September";
+	  			// break;
+	  		case 10: 
+	  			return "October";
+	  			// break;
+	  		case 11: 
+	  			return "November";
+	  			// break;
+	  		case 12:
+	  			return "December";
+	  			// break;
+	  		default: 
+	  			throw "Invalid Input";
+  		}
   	}
 }
 getMonth(number);
+console.log(getMonth(number));
 
 /*
  * PROBLEM 8: (medium)
@@ -198,17 +207,16 @@ getMonth(number);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
+b=toString(b);
+a=toString(a);
  var N = 7;
  function sumSquares(N){
- 	var array=[];
- 	var myTotal = 0;
- 	if( N===""||isNaN(N)||N<=0){
-		conosle.log("Invalid Input");
-	}else if(N>99){
-		conosle.log("Slow down John Wayne, lets choose a number smaller than 100."+"<br>"+"I don't like to multiply THAT much!");
+ 	if( N===""||isNaN(N)||N<=0||typeof N!=="number"){
+		throw "Invalid Input";
 	}
 	else {
-		document.getElementById("error8").innerHTML="";
+		var array=[];
+ 		var myTotal = 0;
 		for(var i=1; i<=N;i++){
 			var square = i*i;
 			array.push(square);
@@ -217,10 +225,11 @@ getMonth(number);
 		for(i in array){ 
 			total += array[i]; 
 		}
-		console.log("function 8 = "+total);
+		return total;
 	}
 }
 sumSquares(N);
+console.log(sumSquares(N));
 
 /* 
  * PROBLEM 9: (medium)
@@ -229,34 +238,43 @@ sumSquares(N);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
-var array = [2, 5, 3,7 ,12, 30, 1, 42];
-function findMaxDiff(array) {
+// var array = [3, 6, 78, 20, 11];
+// var array = 89, 56, 79;
+var arrayNew = [8, 1, 9];
+function findMaxDiff(arrayNew) {
 	var Jimmy=[];
 	var Ymmij=[];
-
-	for (var i=0;i<array.length; i++){
-		if(array.toString()===""||isNaN(array[i])){
-			conosle.log("Invalid Input");
-		}
-		else {		
-			for(i=1; i<array.length;i++){		
-				Jimmy.push(array[i]-array[i-1]);
-				Ymmij.push(array[i-1]-array[i]);		
-				var Bill=array.length-1;
-				if(Jimmy.length==Bill&&Ymmij.length==Bill){
-					Jimmy=Math.max.apply(null,Jimmy);
-					Ymmij=Math.max.apply(null,Ymmij);
-					if (Jimmy>Ymmij){
-						console.log("function 9 = "+Jimmy);
-					}else{
-						console.log("function 9 = "+Ymmij);
+	if (!Array.isArray(arrayNew)||arrayNew.toString()===""){
+		throw "Invalid Input";
+	}
+	else
+	{	
+		for(var i=0; i<arrayNew.length;i++){
+			if(typeof arrayNew[i]!=="number"){
+				throw "Invalid Input";
+			}
+			else
+			{		
+				for(i=1; i<arrayNew.length;i++){		
+					Jimmy.push(arrayNew[i]-arrayNew[i-1]);
+					Ymmij.push(arrayNew[i-1]-arrayNew[i]);		
+					var Bill=arrayNew.length-1;
+					if(Jimmy.length==Bill&&Ymmij.length==Bill){
+						Jimmy=Math.max.apply(null,Jimmy);
+						Ymmij=Math.max.apply(null,Ymmij);
+						if (Jimmy>Ymmij){
+							return Jimmy;
+						}else{
+							return Ymmij;
+						}
 					}
 				}
 			}
 		}
-	}
+	}		
 }
-findMaxDiff(array);
+findMaxDiff(arrayNew);
+console.log(findMaxDiff(arrayNew));
 
 /*
  * PROBLEM 10: (medium)
@@ -266,18 +284,19 @@ findMaxDiff(array);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
- var string = "My name is Charlie.";
+var string = "My name is Charles";
 function insertDashes(string){
-	if (string===""){
-		console.log("Invalid Input");
+	if (string===""||typeof string!=="string"){
+		throw "Invalid Input";
 	}else{
 		string=string.split('').join('-');
 		var re = /- -/g;
 		string=string.replace(re,' ');
-		console.log("function 10 = "+string);
+		return string;
 	}
 }
 insertDashes(string);
+console.log(insertDashes(string));
 
 
 /* 
@@ -293,21 +312,21 @@ insertDashes(string);
  */
 string = "Hello. How are you?  I am fine.";
 a = 3;
-b = 12;
+b = 13;
 function mySubstring(string, a, b){
-	if(string===""||a===""||b===""||isNaN(a)||isNaN(b)||
-	a<0||b>string.length){
-		console.log("Invalid Input");
+	if(string===""||typeof string!=="string"||a===""||b===""||isNaN(a)||isNaN(b)||
+	a<0||b>string.length||typeof a!=="number"||typeof b!=="number"){
+		throw "Invalid Input";
 	}
 	else 
 	{
-		b=parseInt(b)+1;
-		a=parseInt(a);
+		b=b+1;
 		string=string.slice(a, b);
-		console.log("function 11 = "+string);
+		return string;
 	}
 }
 mySubstring(string, a, b);
+console.log(mySubstring(string, a, b));
 
 /*
  * PROBLEM 12: (medium)
@@ -319,20 +338,19 @@ mySubstring(string, a, b);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
-array = ["a", "b", "c", "d", "e"];
-function splitSwap(array){
-	if(array===""){
-		console.log("Invalid Input");
+var swapArray=[1, 2, 3, 4, 5];
+function splitSwap(swapArray){
+	if(swapArray===""||!Array.isArray(swapArray)){
+		throw "Invalid Input";
 	}
 	else {
-			var rightArray = array.splice(0, Math.floor(array.length/2));
-			array=array.concat(rightArray);
-			array = "[" + array.join(",") + "]";
-			console.log("function 12 = "+array);
+			var rightArray = swapArray.splice(0,Math.floor(swapArray.length/2));
+			var lastArray=swapArray.concat(rightArray);
+			console.log(lastArray);
+			return lastArray;
 		}
 }
-splitSwap(array);
-
+splitSwap(swapArray);
 
 /*
  * PROBLEM 13: (medium)
@@ -344,21 +362,22 @@ splitSwap(array);
  *
  * If the input is invalid throw an 'Invalid Input' exception.
  */
- var n = 16;
- var k = 3;
+ var n = 13;
+ var k = 2;
  function smallMultiples(n, k){
  	var array=[];
- 	if(n===""||k===""||k>=n||isNaN(n)||isNaN(k)){
- 		console.log("Invalid Input");
+ 	if(n===""||k===""||k>=n||isNaN(n)||isNaN(k)||typeof n!=="number"||typeof k!=="number"){
+ 		throw "Invalid Input";
  	}else{
  		for (var i=2; i<=n;i++){
 			if(i*k<=n){
 				array.push(i);
 			}
  		}
- 		console.log("function 13 = "+array.length);
+ 		return array.length;
  	}
 }
 smallMultiples(n,k);
+console.log(smallMultiples(n,k));
 }());
  
